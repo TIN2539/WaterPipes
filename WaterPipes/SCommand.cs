@@ -2,11 +2,11 @@
 
 namespace WaterPipes
 {
-	internal class SCommand : Command
+	internal class S : Command
 	{
 		private Game game;
 
-		public SCommand(Game game) : base(ConsoleKey.S)
+		public S(Game game) : base(ConsoleKey.S)
 		{
 			this.game = game;
 		}
