@@ -2,7 +2,7 @@
 
 namespace WaterPipes
 {
-	class DeleteCommand : Command
+	internal class DeleteCommand : Command
 	{
 		private Game game;
 

@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace WaterPipes
 {
-	class Game
+	internal class Game
 	{
 		private List<TCommand> commands;
 		private int delay;
