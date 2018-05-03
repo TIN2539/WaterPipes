@@ -4,85 +4,50 @@ namespace WaterPipes
 {
 	internal class Cell
 	{
-		private char characterForCell;
-		private ConsoleColor colorForCharacter;
-		private bool hasWater;
-		private bool isChecked;
-		private bool isEmpty;
-		private string name;
-
 		public Cell()
 		{
-			isEmpty = true;
-			characterForCell = ' ';
-			colorForCharacter = ConsoleColor.Black;
-			hasWater = false;
-			isChecked = false;
-			name = "Cell";
+			IsEmpty = true;
+			CharacterForCell = ' ';
+			ColorForCharacter = ConsoleColor.Black;
+			HasWater = false;
+			IsChecked = false;
+			Name = "Cell";
 		}
 
 		public Cell(bool isEmpty, char characterForCell, bool hasWater, ConsoleColor colorForCharacter, string name)
 		{
-			this.isEmpty = isEmpty;
-			this.characterForCell = characterForCell;
-			this.colorForCharacter = colorForCharacter;
-			this.hasWater = hasWater;
-			isChecked = false;
-			this.name = name;
+			IsEmpty = isEmpty;
+			CharacterForCell = characterForCell;
+			ColorForCharacter = colorForCharacter;
+			HasWater = hasWater;
+			IsChecked = false;
+			Name = name;
 		}
+
+		public char CharacterForCell { get; set; }
+
+		public ConsoleColor ColorForCharacter { get; set; }
+
+		public bool HasWater { get; set; }
+
+		public bool IsChecked { get; set;}
+
+		public bool IsEmpty { get; set; }
+
+		public string Name { get; set; }
 
 		public virtual void WriteCell(int x, int y)
 		{
 			Console.SetCursorPosition(x, y);
-			Console.ForegroundColor = colorForCharacter;
-			Console.Write(characterForCell);
+			Console.ForegroundColor = ColorForCharacter;
+			Console.Write(CharacterForCell);
 			Console.ResetColor();
 		}
 
 		public void ChangeHasWater()
 		{
-			hasWater = true;
-			colorForCharacter = ConsoleColor.Blue;
-		}
-
-		public char GetCharacterForCell()
-		{
-			return characterForCell;
-		}
-
-		public ConsoleColor GetColor()
-		{
-			return colorForCharacter;
-		}
-
-		public bool GetHasWater()
-		{
-			return hasWater;
-		}
-
-		public bool GetIsCheckec()
-		{
-			return isChecked;
-		}
-
-		public bool GetIsEmpty()
-		{
-			return isEmpty;
-		}
-
-		public string GetName()
-		{
-			return name;
-		}
-
-		public void ResetIsChecked()
-		{
-			isChecked = false;
-		}
-
-		public void SetIsChecked()
-		{
-			isChecked = true;
+			HasWater = true;
+			ColorForCharacter = ConsoleColor.Blue;
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace WaterPipes
 			do
 			{
 				game.Play();
-			} while (game.IsGameOver() == false);
+			} while (game.IsGameOver == false);
 			return base.Execute();
 		}
 	}

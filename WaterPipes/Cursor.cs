@@ -5,48 +5,39 @@ namespace WaterPipes
 	internal class Cursor
 	{
 		private const char characterForCursor = 'X';
-		private int currentX;
-		private int currentY;
 
 		public Cursor(int currentX, int currentY)
 		{
-			this.currentX = currentX;
-			this.currentY = currentY;
+			CurrentX = currentX;
+			CurrentY = currentY;
 		}
+
+		public int CurrentX { get; set; }
+		public int CurrentY { get; set; }
 
 		public int DecrementX()
 		{
-			return --currentX;
+			return --CurrentX;
 		}
 
 		public int DecrementY()
 		{
-			return --currentY;
-		}
-
-		public int GetCurrentX()
-		{
-			return currentX;
-		}
-
-		public int GetCurrentY()
-		{
-			return currentY;
+			return --CurrentY;
 		}
 
 		public int IncrementX()
 		{
-			return ++currentX;
+			return ++CurrentX;
 		}
 
 		public int IncrementY()
 		{
-			return ++currentY;
+			return ++CurrentY;
 		}
 
 		public void ShowCursor()
 		{
-			Console.SetCursorPosition(currentX, currentY);
+			Console.SetCursorPosition(CurrentX, CurrentY);
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.Write(characterForCursor);
 			Console.ResetColor();

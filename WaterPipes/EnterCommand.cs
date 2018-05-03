@@ -13,11 +13,11 @@ namespace WaterPipes
 
 		public override bool Execute()
 		{
-			int indexY = game.GetCursor().GetCurrentY() - game.GetField().GetTopMost();
-			int indexX = game.GetCursor().GetCurrentX() - game.GetField().GetLeftMost();
-			if (game.CheckNeighbors(indexX, indexY) && game.GetField().GetCells()[indexY, indexX].GetName() != SourceCell.sourceName)
+			int indexY = game.UserCursor.CurrentY - game.UserField.TopMost;
+			int indexX = game.UserCursor.CurrentX - game.UserField.LeftMost;
+			if (game.CheckNeighbors(indexX, indexY) && game.UserField.Cells[indexY, indexX].Name != SourceCell.sourceName)
 			{
-				game.GetField().GetCells()[indexY, indexX] = new PipeCell();
+				game.UserField.Cells[indexY, indexX] = new PipeCell();
 			}
 			return base.Execute();
 		}

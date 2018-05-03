@@ -7,7 +7,7 @@ namespace WaterPipes
 		static void Main(string[] args)
 		{
 			Game game = new Game();
-			game.GetField().Paint();
+			game.UserField.Paint();
 			do
 			{
 				game.Update();

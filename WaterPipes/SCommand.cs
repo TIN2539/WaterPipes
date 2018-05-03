@@ -13,8 +13,7 @@ namespace WaterPipes
 
 		public override bool Execute()
 		{
-			game.GetField().GetCells()[game.GetCursor().GetCurrentY() - game.GetField().GetTopMost(), game.GetCursor().GetCurrentX()
-			- game.GetField().GetLeftMost()] = new SourceCell();
+			game.UserField.Cells[game.UserCursor.CurrentY - game.UserField.TopMost, game.UserCursor.CurrentX - game.UserField.LeftMost] = new SourceCell();
 			return base.Execute();
 		}
 	}

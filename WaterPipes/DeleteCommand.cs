@@ -13,12 +13,12 @@ namespace WaterPipes
 
 		public override bool Execute()
 		{
-			int indexY = game.GetCursor().GetCurrentY() - game.GetField().GetTopMost();
-			int indexX = game.GetCursor().GetCurrentX() - game.GetField().GetLeftMost();
-			game.GetField().GetCells()[indexY, indexX].SetIsChecked();
+			int indexY = game.UserCursor.CurrentY - game.UserField.TopMost;
+			int indexX = game.UserCursor.CurrentX - game.UserField.LeftMost;
+			game.UserField.Cells[indexY, indexX].IsChecked = true;
 			if (game.CheckIsPosibleDelete(indexX, indexY))
 			{
-				game.GetField().GetCells()[indexY, indexX] = new Cell();
+				game.UserField.Cells[indexY, indexX] = new Cell();
 			}
 			return base.Execute();
 		}

@@ -13,9 +13,9 @@ namespace WaterPipes
 
 		public override bool Execute()
 		{
-			if (game.GetCursor().GetCurrentY() > game.GetField().GetTopMost())
+			if (game.UserCursor.CurrentY > game.UserField.TopMost)
 			{
-				Console.SetCursorPosition(game.GetCursor().GetCurrentX(), game.GetCursor().DecrementY());
+				Console.SetCursorPosition(game.UserCursor.CurrentX, game.UserCursor.DecrementY());
 			}
 			return base.Execute();
 		}
