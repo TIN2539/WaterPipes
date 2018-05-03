@@ -6,12 +6,6 @@ namespace WaterPipes
 	{
 		public Cell()
 		{
-			IsEmpty = true;
-			CharacterForCell = ' ';
-			ColorForCharacter = ConsoleColor.Black;
-			HasWater = false;
-			IsChecked = false;
-			Name = "Cell";
 		}
 
 		public Cell(bool isEmpty, char characterForCell, bool hasWater, ConsoleColor colorForCharacter, string name)
@@ -24,17 +18,17 @@ namespace WaterPipes
 			Name = name;
 		}
 
-		public char CharacterForCell { get; set; }
+		public char CharacterForCell { get; set; } = ' ';
 
-		public ConsoleColor ColorForCharacter { get; set; }
+		public ConsoleColor ColorForCharacter { get; set; } = ConsoleColor.Black;
 
-		public bool HasWater { get; set; }
+		public bool HasWater { get; set; } = false;
 
-		public bool IsChecked { get; set;}
+		public bool IsChecked { get; set; } = false;
 
-		public bool IsEmpty { get; set; }
+		public bool IsEmpty { get; set; } = true;
 
-		public string Name { get; set; }
+		public string Name { get;} = "Cell";
 
 		public virtual void WriteCell(int x, int y)
 		{
