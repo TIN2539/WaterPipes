@@ -2,7 +2,7 @@
 
 namespace WaterPipes
 {
-	internal class Command : ICommand
+	internal class Command : TCommand
 	{
 		private ConsoleKey key;
 

@@ -2,7 +2,7 @@
 
 namespace WaterPipes
 {
-	internal abstract class ICommand
+	internal abstract class TCommand
 	{
 		public abstract bool CanExecute(ConsoleKey key);
 

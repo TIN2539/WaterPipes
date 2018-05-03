@@ -6,7 +6,7 @@ namespace WaterPipes
 {
 	class Game
 	{
-		private List<ICommand> commands;
+		private List<TCommand> commands;
 		private int delay;
 		private Step step;
 
@@ -16,7 +16,7 @@ namespace WaterPipes
 			UserCursor = new Cursor(UserField.LeftMost, UserField.TopMost);
 			delay = 400;
 			step = new Step();
-			commands = new List<ICommand>
+			commands = new List<TCommand>
 			{
 				new RightCommand(this),
 				new LeftCommand(this),
@@ -92,7 +92,7 @@ namespace WaterPipes
 		public bool IsKeyPressed(ConsoleKey key)
 		{
 			bool isSpacebarPressed = false;
-			foreach (ICommand command in commands)
+			foreach (TCommand command in commands)
 			{
 				if (command.CanExecute(key))
 				{
