@@ -4,7 +4,7 @@ namespace WaterPipes
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		internal static void Main(string[] args)
 		{
 			Game game = new Game();
 			game.UserField.Paint();
