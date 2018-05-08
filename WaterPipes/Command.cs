@@ -2,7 +2,7 @@
 
 namespace WaterPipes
 {
-	internal class Command : TCommand
+	internal class Command : ICommand
 	{
 		private ConsoleKey key;
 
@@ -11,12 +11,12 @@ namespace WaterPipes
 			this.key = key;
 		}
 
-		public override bool CanExecute(ConsoleKey key)
+		public virtual bool CanExecute(ConsoleKey key)
 		{
 			return this.key == key;
 		}
 
-		public override bool Execute()
+		public virtual bool Execute()
 		{
 			return key == ConsoleKey.Spacebar;
 		}

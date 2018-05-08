@@ -50,7 +50,7 @@
     <Compile Include="EnterCommand.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="TCommand.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="LeftCommand.cs" />
     <Compile Include="PipeCell.cs" />
     <Compile Include="Program.cs" />
