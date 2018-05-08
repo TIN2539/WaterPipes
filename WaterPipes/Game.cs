@@ -31,9 +31,9 @@ namespace WaterPipes
 			get { return CheckEmptyPipe() ? false : true; }
 		}
 
-		public Cursor UserCursor { get; set; }
+		public Cursor UserCursor { get; internal set; }
 
-		public Field UserField { get; set; } = new Field(15, 30);
+		public Field UserField { get; internal set; } = new Field(15, 30);
 
 		public bool CheckCell(int x, int y)
 		{

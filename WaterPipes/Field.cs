@@ -10,15 +10,15 @@ namespace WaterPipes
 
 		private int width;
 
-		public Cell[,] Cells { get; set; }
+		public Cell[,] Cells { get; internal set; }
 
 		public int TopMost { get; } = 2;
 
 		public int LeftMost { get; } = 1;
 
-		public int Row { get; set; }
+		public int Row { get; internal set; }
 
-		public int Column { get; set; }
+		public int Column { get; internal set; }
 
 		public Field(int row, int column)
 		{
