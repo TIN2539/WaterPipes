@@ -7,15 +7,12 @@ namespace WaterPipes
 	internal class Game
 	{
 		private List<TCommand> commands;
-		private int delay;
-		private Step step;
+		private const int delay = 400;
+		private Step step = new Step();
 
 		public Game()
 		{
-			UserField = new Field(15, 30);
 			UserCursor = new Cursor(UserField.LeftMost, UserField.TopMost);
-			delay = 400;
-			step = new Step();
 			commands = new List<TCommand>
 			{
 				new RightCommand(this),
@@ -39,7 +36,7 @@ namespace WaterPipes
 
 		public Cursor UserCursor { get; set; }
 
-		public Field UserField { get; set; }
+		public Field UserField { get; set; } = new Field(15, 30);
 
 		public bool CheckCell(int x, int y)
 		{
