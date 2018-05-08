@@ -22,9 +22,9 @@ namespace WaterPipes
 
 		public ConsoleColor ColorForCharacter { get; set; } = ConsoleColor.Black;
 
-		public bool HasWater { get; internal set; } = false;
+		public bool HasWater { get; internal set; }
 
-		public bool IsChecked { get; internal set; } = false;
+		public bool IsChecked { get; internal set; }
 
 		public bool IsEmpty { get; internal set; } = true;
 
