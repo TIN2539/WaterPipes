@@ -48,7 +48,7 @@ namespace WaterPipes
 		public bool CheckDownCell(int x, int y)
 		{
 			bool isSourceCell = false;
-			if (y + 1 < UserField.Row && UserField.Cells[y + 1, x].IsChecked == false)
+			if (y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsChecked)
 			{
 				UserField.Cells[y + 1, x].IsChecked = true;
 				if (UserField.Cells[y + 1, x].Name == SourceCell.sourceName)
@@ -67,7 +67,7 @@ namespace WaterPipes
 		public bool CheckDownNeighbor(int x, int y)
 		{
 			bool isCell = false;
-			if (y + 1 < UserField.Row && UserField.Cells[y + 1, x].IsEmpty == false)
+			if (y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsEmpty)
 			{
 				isCell = true;
 			}
@@ -81,7 +81,7 @@ namespace WaterPipes
 			{
 				for (int j = 0; j < UserField.Column; j++)
 				{
-					if (UserField.Cells[i, j].Name == PipeCell.pipeName && UserField.Cells[i, j].HasWater == false)
+					if (UserField.Cells[i, j].Name == PipeCell.pipeName && !UserField.Cells[i, j].HasWater)
 					{
 						hasEmptyPipe = true;
 						break;
@@ -146,7 +146,7 @@ namespace WaterPipes
 		public bool CheckLeftCell(int x, int y)
 		{
 			bool isSourceCell = false;
-			if (x - 1 >= 0 && UserField.Cells[y, x - 1].IsChecked == false)
+			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsChecked)
 			{
 				UserField.Cells[y, x - 1].IsChecked = true;
 				if (UserField.Cells[y, x - 1].Name == SourceCell.sourceName)
@@ -166,7 +166,7 @@ namespace WaterPipes
 		public bool CheckLeftNeighbor(int x, int y)
 		{
 			bool isCell = false;
-			if (x - 1 >= 0 && UserField.Cells[y, x - 1].IsEmpty == false)
+			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsEmpty)
 			{
 				isCell = true;
 			}
@@ -186,7 +186,7 @@ namespace WaterPipes
 		public bool CheckRightCell(int x, int y)
 		{
 			bool isSourceCell = false;
-			if (x + 1 < UserField.Column && UserField.Cells[y, x + 1].IsChecked == false)
+			if (x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsChecked)
 			{
 				UserField.Cells[y, x + 1].IsChecked = true;
 				if (UserField.Cells[y, x + 1].Name == SourceCell.sourceName)
@@ -206,7 +206,7 @@ namespace WaterPipes
 		public bool CheckRightNeighbor(int x, int y)
 		{
 			bool isCell = false;
-			if (x + 1 < UserField.Column && UserField.Cells[y, x + 1].IsEmpty == false)
+			if (x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsEmpty)
 			{
 				isCell = true;
 			}
@@ -216,7 +216,7 @@ namespace WaterPipes
 		public bool CheckUpCell(int x, int y)
 		{
 			bool isSourceCell = false;
-			if (y - 1 >= 0 && UserField.Cells[y - 1, x].IsChecked == false)
+			if (y - 1 >= 0 && !UserField.Cells[y - 1, x].IsChecked)
 			{
 				UserField.Cells[y - 1, x].IsChecked = true;
 				if (UserField.Cells[y - 1, x].Name == SourceCell.sourceName)
@@ -236,7 +236,7 @@ namespace WaterPipes
 		public bool CheckUpNeighbor(int x, int y)
 		{
 			bool isCell = false;
-			if (y - 1 >= 0 && UserField.Cells[y - 1, x].IsEmpty == false)
+			if (y - 1 >= 0 && !UserField.Cells[y - 1, x].IsEmpty)
 			{
 				isCell = true;
 			}
@@ -248,12 +248,12 @@ namespace WaterPipes
 			for (int i = -1; i <= 1; i++)
 			{
 				if (y + i >= 0 && y + i < UserField.Column && UserField.Cells[x, y + i].Name == PipeCell.pipeName
-					&& UserField.Cells[x, y + i].HasWater == false)
+					&& !UserField.Cells[x, y + i].HasWater)
 				{
 					cellForMakeChanges[x, y + i].ChangeHasWater();
 				}
 				if (x + i >= 0 && x + i < UserField.Row && UserField.Cells[x + i, y].Name == PipeCell.pipeName
-					&& UserField.Cells[x + i, y].HasWater == false)
+					&& !UserField.Cells[x + i, y].HasWater)
 				{
 					cellForMakeChanges[x + i, y].ChangeHasWater();
 				}
