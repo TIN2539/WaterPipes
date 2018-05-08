@@ -7,6 +7,7 @@ namespace WaterPipes
 		private const char characterForFrame = '+';
 
 		private int height;
+
 		private int width;
 
 		public Cell[,] Cells { get; set; }

@@ -13,6 +13,7 @@ namespace WaterPipes
 		}
 
 		public int CurrentX { get; set; }
+
 		public int CurrentY { get; set; }
 
 		public int DecrementX()
