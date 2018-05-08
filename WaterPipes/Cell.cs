@@ -30,18 +30,18 @@ namespace WaterPipes
 
 		public string Name { get;} = "Cell";
 
-		public virtual void WriteCell(int x, int y)
+		public void ChangeHasWater()
+		{
+			HasWater = true;
+			ColorForCharacter = ConsoleColor.Blue;
+		}
+
+		public void WriteCell(int x, int y)
 		{
 			Console.SetCursorPosition(x, y);
 			Console.ForegroundColor = ColorForCharacter;
 			Console.Write(CharacterForCell);
 			Console.ResetColor();
-		}
-
-		public void ChangeHasWater()
-		{
-			HasWater = true;
-			ColorForCharacter = ConsoleColor.Blue;
 		}
 	}
 }

@@ -6,16 +6,18 @@ namespace WaterPipes
 	{
 		private const char characterForFrame = '+';
 
+		private int height;
+		private int width;
+
 		public Cell[,] Cells { get; set; }
 
 		public int TopMost { get; } = 2;
 
 		public int LeftMost { get; } = 1;
-		public int Row { get; set; }
-		public int Column { get; set; }
 
-		private int height;
-		private int width;
+		public int Row { get; set; }
+
+		public int Column { get; set; }
 
 		public Field(int row, int column)
 		{
