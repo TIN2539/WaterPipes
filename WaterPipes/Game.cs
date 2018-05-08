@@ -28,7 +28,7 @@ namespace WaterPipes
 
 		public bool IsGameOver
 		{
-			get { return CheckEmptyPipe() ? false : true; }
+			get { return !CheckEmptyPipe(); }
 		}
 
 		public Cursor UserCursor { get; internal set; }
