@@ -2,11 +2,11 @@
 
 namespace WaterPipes
 {
-	internal class Spacebar : Command
+	internal class PlayCommand : Command
 	{
 		private Game game;
 
-		public Spacebar(Game game) : base(ConsoleKey.Spacebar)
+		public PlayCommand(Game game) : base(ConsoleKey.Spacebar)
 		{
 			this.game = game;
 		}

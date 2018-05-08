@@ -20,8 +20,8 @@ namespace WaterPipes
 				new UpCommand(this),
 				new DownCommand(this),
 				new EnterCommand(this),
-				new Spacebar(this),
-				new S(this),
+				new PlayCommand(this),
+				new SourceCommand(this),
 				new DeleteCommand(this)
 			};
 		}
