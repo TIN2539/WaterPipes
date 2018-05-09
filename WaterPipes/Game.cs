@@ -64,16 +64,6 @@ namespace WaterPipes
 			return isSourceCell;
 		}
 
-		public bool CheckDownNeighbor(int x, int y)
-		{
-			bool isCell = false;
-			if (y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsEmpty)
-			{
-				isCell = true;
-			}
-			return isCell;
-		}
-
 		public bool CheckEmptyPipe()
 		{
 			bool hasEmptyPipe = false;
@@ -98,46 +88,10 @@ namespace WaterPipes
 		public bool CheckIsPosibleDelete(int x, int y)
 		{
 			bool isPosibleDelete = false;
-			bool isLeft = false;
-			bool isRight = false;
-			bool isDown = false;
-			bool isUp = false;
 			UserField.Cells[y, x].IsChecked = true;
-			if (CheckLeftNeighbor(x, y))
+			if (CheckNeighbors(x, y))
 			{
-				isLeft = CheckLeftCell(x, y);
-			}
-			else
-			{
-				isLeft = true;
-			}
-			if (CheckRightNeighbor(x, y))
-			{
-				isRight = CheckRightCell(x, y);
-			}
-			else
-			{
-				isRight = true;
-			}
-			if (CheckDownNeighbor(x, y))
-			{
-				isDown = CheckDownCell(x, y);
-			}
-			else
-			{
-				isDown = true;
-			}
-			if (CheckUpNeighbor(x, y))
-			{
-				isUp = CheckUpCell(x, y);
-			}
-			else
-			{
-				isUp = true;
-			}
-			if (isRight && isLeft && isUp && isDown)
-			{
-				isPosibleDelete = true;
+
 			}
 			UserField.Cells[y, x].IsChecked = false;
 			return isPosibleDelete;
@@ -163,24 +117,34 @@ namespace WaterPipes
 			return isSourceCell;
 		}
 
-		public bool CheckLeftNeighbor(int x, int y)
+		public bool CheckNeighbors(int x, int y)
+		{
+			bool hasNeighbor = false;
+			for (int i = -1; i <= 1; i++)
+			{
+				if (i != 0)
+				{
+					if (CheckNeighbor(x + i, y) || CheckNeighbor(x, y + i))
+					{
+						hasNeighbor = true;
+					}
+				}
+				if (hasNeighbor)
+				{
+					break;
+				}
+			}
+			return hasNeighbor;
+		}
+
+		private bool CheckNeighbor(int x, int y)
 		{
 			bool isCell = false;
-			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsEmpty)
+			if (x >= 0 && x < UserField.Column && y >= 0 && y < UserField.Row && !UserField.Cells[y, x].IsEmpty)
 			{
 				isCell = true;
 			}
 			return isCell;
-		}
-
-		public bool CheckNeighbors(int x, int y)
-		{
-			bool hasNeighbor = false;
-			if (CheckUpNeighbor(x, y) || CheckLeftNeighbor(x, y) || CheckDownNeighbor(x, y) || CheckRightNeighbor(x, y))
-			{
-				hasNeighbor = true;
-			}
-			return hasNeighbor;
 		}
 
 		public bool CheckRightCell(int x, int y)
@@ -203,16 +167,6 @@ namespace WaterPipes
 			return isSourceCell;
 		}
 
-		public bool CheckRightNeighbor(int x, int y)
-		{
-			bool isCell = false;
-			if (x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsEmpty)
-			{
-				isCell = true;
-			}
-			return isCell;
-		}
-
 		public bool CheckUpCell(int x, int y)
 		{
 			bool isSourceCell = false;
@@ -231,16 +185,6 @@ namespace WaterPipes
 
 			}
 			return isSourceCell;
-		}
-
-		public bool CheckUpNeighbor(int x, int y)
-		{
-			bool isCell = false;
-			if (y - 1 >= 0 && !UserField.Cells[y - 1, x].IsEmpty)
-			{
-				isCell = true;
-			}
-			return isCell;
 		}
 
 		public void DoStep(int x, int y, Cell[,] cellForMakeChanges)
