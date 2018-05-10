@@ -38,28 +38,31 @@ namespace WaterPipes
 		public bool CheckCell(int x, int y)
 		{
 			bool check = false;
-			if (CheckLeftCell(x, y) || CheckRightCell(x, y) || CheckUpCell(x, y) || CheckDownCell(x, y))
+			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsEmpty && CheckCells(x - 1, y) ||
+				x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsEmpty && CheckCells(x + 1, y) ||
+				y - 1 >= 0 && !UserField.Cells[y - 1, x].IsEmpty && CheckCells(x, y - 1) ||
+				y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsEmpty && CheckCells(x, y + 1))
 			{
 				check = true;
 			}
 			return check;
 		}
 
-		public bool CheckDownCell(int x, int y)
+		public bool CheckCells(int x, int y)
 		{
 			bool isSourceCell = false;
-			if (y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsChecked)
+			if (!UserField.Cells[y, x].IsChecked)
 			{
-				UserField.Cells[y + 1, x].IsChecked = true;
-				if (UserField.Cells[y + 1, x].Name == SourceCell.sourceName)
+				UserField.Cells[y, x].IsChecked = true;
+				if (UserField.Cells[y, x].Name == SourceCell.sourceName)
 				{
 					isSourceCell = true;
 				}
-				else if (UserField.Cells[y + 1, x].Name == PipeCell.pipeName)
+				else if (UserField.Cells[y, x].Name == PipeCell.pipeName)
 				{
-					isSourceCell = CheckCell(x, y + 1);
+					isSourceCell = CheckCell(x, y);
 				}
-				UserField.Cells[y + 1, x].IsChecked = false;
+				UserField.Cells[y, x].IsChecked = false;
 			}
 			return isSourceCell;
 		}
@@ -88,56 +91,52 @@ namespace WaterPipes
 		public bool CheckIsPosibleDelete(int x, int y)
 		{
 			bool isPosibleDelete = false;
+			bool isLeft = false;
+			bool isRight = false;
+			bool isDown = false;
+			bool isUp = false;
 			UserField.Cells[y, x].IsChecked = true;
-			if (CheckNeighbors(x, y))
+			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsEmpty)
 			{
-
+				isLeft = CheckCells(x - 1, y);
+			}
+			else
+			{
+				isLeft = true;
+			}
+			if (x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsEmpty)
+			{
+				isRight = CheckCells(x + 1, y);
+			}
+			else
+			{
+				isRight = true;
+			}
+			if (y - 1 >= 0 && !UserField.Cells[y - 1, x].IsEmpty)
+			{
+				isUp = CheckCells(x, y - 1);
+			}
+			else
+			{
+				isUp = true;
+			}
+			if (y + 1 < UserField.Row && !UserField.Cells[y + 1, x].IsEmpty)
+			{
+				isDown = CheckCells(x, y + 1);
+			}
+			else
+			{
+				isDown = true;
+			}
+			if (isRight && isLeft && isUp && isDown)
+			{
+				isPosibleDelete = true;
 			}
 			UserField.Cells[y, x].IsChecked = false;
 			return isPosibleDelete;
 		}
 
-		public bool CheckLeftCell(int x, int y)
-		{
-			bool isSourceCell = false;
-			if (x - 1 >= 0 && !UserField.Cells[y, x - 1].IsChecked)
-			{
-				UserField.Cells[y, x - 1].IsChecked = true;
-				if (UserField.Cells[y, x - 1].Name == SourceCell.sourceName)
-				{
-					isSourceCell = true;
-				}
-				else if (UserField.Cells[y, x - 1].Name == PipeCell.pipeName)
-				{
-					isSourceCell = CheckCell(x - 1, y);
-				}
-				UserField.Cells[y, x - 1].IsChecked = false;
-
-			}
-			return isSourceCell;
-		}
-
-		public bool CheckNeighbors(int x, int y)
-		{
-			bool hasNeighbor = false;
-			for (int i = -1; i <= 1; i++)
-			{
-				if (i != 0)
-				{
-					if (CheckNeighbor(x + i, y) || CheckNeighbor(x, y + i))
-					{
-						hasNeighbor = true;
-					}
-				}
-				if (hasNeighbor)
-				{
-					break;
-				}
-			}
-			return hasNeighbor;
-		}
-
-		private bool CheckNeighbor(int x, int y)
+		public bool CheckNeighbor(int x, int y)
 		{
 			bool isCell = false;
 			if (x >= 0 && x < UserField.Column && y >= 0 && y < UserField.Row && !UserField.Cells[y, x].IsEmpty)
@@ -147,44 +146,24 @@ namespace WaterPipes
 			return isCell;
 		}
 
-		public bool CheckRightCell(int x, int y)
+		public bool CheckNeighbors(int x, int y)
 		{
-			bool isSourceCell = false;
-			if (x + 1 < UserField.Column && !UserField.Cells[y, x + 1].IsChecked)
+			bool hasNeighbour = false;
+			for (int i = -1; i <= 1; i++)
 			{
-				UserField.Cells[y, x + 1].IsChecked = true;
-				if (UserField.Cells[y, x + 1].Name == SourceCell.sourceName)
+				if (i != 0)
 				{
-					isSourceCell = true;
+					if (CheckNeighbor(x + i, y) || CheckNeighbor(x, y + i))
+					{
+						hasNeighbour = true;
+					}
 				}
-				else if (UserField.Cells[y, x + 1].Name == PipeCell.pipeName)
+				if (hasNeighbour)
 				{
-					isSourceCell = CheckCell(x + 1, y);
+					break;
 				}
-				UserField.Cells[y, x + 1].IsChecked = false;
-
 			}
-			return isSourceCell;
-		}
-
-		public bool CheckUpCell(int x, int y)
-		{
-			bool isSourceCell = false;
-			if (y - 1 >= 0 && !UserField.Cells[y - 1, x].IsChecked)
-			{
-				UserField.Cells[y - 1, x].IsChecked = true;
-				if (UserField.Cells[y - 1, x].Name == SourceCell.sourceName)
-				{
-					isSourceCell = true;
-				}
-				else if (UserField.Cells[y - 1, x].Name == PipeCell.pipeName)
-				{
-					isSourceCell = CheckCell(x, y - 1);
-				}
-				UserField.Cells[y - 1, x].IsChecked = false;
-
-			}
-			return isSourceCell;
+			return hasNeighbour;
 		}
 
 		public void DoStep(int x, int y, Cell[,] cellForMakeChanges)
