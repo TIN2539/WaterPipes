@@ -7,6 +7,7 @@ namespace WaterPipes
 	internal class Game
 	{
 		private const int delay = 400;
+
 		private List<ICommand> commands;
 		private Step step = new Step();
 

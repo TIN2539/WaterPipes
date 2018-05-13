@@ -5,6 +5,7 @@ namespace WaterPipes
 	internal class Field
 	{
 		private const char characterForFrame = '+';
+
 		private int height;
 		private int width;
 
