@@ -19,7 +19,7 @@ namespace WaterPipes
 				new LeftCommand(this),
 				new UpCommand(this),
 				new DownCommand(this),
-				new EnterCommand(this),
+				new ConfirmCommand(this),
 				new PlayCommand(this),
 				new SourceCommand(this),
 				new DeleteCommand(this)

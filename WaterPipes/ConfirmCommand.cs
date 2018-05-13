@@ -2,11 +2,11 @@
 
 namespace WaterPipes
 {
-	internal class EnterCommand : Command
+	internal class ConfirmCommand : Command
 	{
 		private Game game;
 
-		public EnterCommand(Game game) : base(ConsoleKey.Enter)
+		public ConfirmCommand(Game game) : base(ConsoleKey.Enter)
 		{
 			this.game = game;
 		}
