@@ -4,11 +4,6 @@ namespace WaterPipes
 {
 	internal class Step
 	{
-		public Step()
-		{
-			NumberOfStep = 0;
-		}
-
 		public int NumberOfStep { get; private set; }
 
 		public void Paint()
