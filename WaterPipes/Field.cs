@@ -5,20 +5,8 @@ namespace WaterPipes
 	internal class Field
 	{
 		private const char characterForFrame = '+';
-
 		private int height;
-
 		private int width;
-
-		public Cell[,] Cells { get; internal set; }
-
-		public int TopMost { get; } = 2;
-
-		public int LeftMost { get; } = 1;
-
-		public int Row { get; internal set; }
-
-		public int Column { get; internal set; }
 
 		public Field(int row, int column)
 		{
@@ -35,6 +23,16 @@ namespace WaterPipes
 				}
 			}
 		}
+
+		public Cell[,] Cells { get; internal set; }
+
+		public int Column { get; internal set; }
+
+		public int LeftMost { get; } = 1;
+
+		public int Row { get; internal set; }
+
+		public int TopMost { get; } = 2;
 
 		public void Paint()
 		{
