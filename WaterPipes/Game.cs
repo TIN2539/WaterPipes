@@ -216,7 +216,7 @@ namespace WaterPipes
 				for (int j = 0; j < UserField.Column; j++)
 				{
 					if (UserField.Cells[i, j].Name == SourceCell.sourceName || (UserField.Cells[i, j].Name == PipeCell.pipeName &&
-						UserField.Cells[i, j].HasWater == true))
+						UserField.Cells[i, j].HasWater))
 					{
 						DoStep(i, j, cellForMakeChanges);
 					}
