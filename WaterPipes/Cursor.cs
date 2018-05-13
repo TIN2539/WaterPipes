@@ -12,9 +12,9 @@ namespace WaterPipes
 			CurrentY = currentY;
 		}
 
-		public int CurrentX { get; internal set; }
+		public int CurrentX { get; private set; }
 
-		public int CurrentY { get; internal set; }
+		public int CurrentY { get; private set; }
 
 		public int DecrementX()
 		{

@@ -25,13 +25,13 @@ namespace WaterPipes
 			}
 		}
 
-		public Cell[,] Cells { get; internal set; }
+		public Cell[,] Cells { get; set; }
 
-		public int Column { get; internal set; }
+		public int Column { get; private set; }
 
 		public int LeftMost { get; } = 1;
 
-		public int Row { get; internal set; }
+		public int Row { get; private set; }
 
 		public int TopMost { get; } = 2;
 

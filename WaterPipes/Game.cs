@@ -32,9 +32,9 @@ namespace WaterPipes
 			get { return !CheckEmptyPipe(); }
 		}
 
-		public Cursor UserCursor { get; internal set; }
+		public Cursor UserCursor { get; private set; }
 
-		public Field UserField { get; internal set; } = new Field(15, 30);
+		public Field UserField { get; private set; } = new Field(15, 30);
 
 		public bool CheckCell(int x, int y)
 		{

@@ -18,15 +18,15 @@ namespace WaterPipes
 			Name = name;
 		}
 
-		public char CharacterForCell { get; internal set; } = ' ';
+		public char CharacterForCell { get; private set; } = ' ';
 
-		public ConsoleColor ColorForCharacter { get; set; } = ConsoleColor.Black;
+		public ConsoleColor ColorForCharacter { get; private set; } = ConsoleColor.Black;
 
-		public bool HasWater { get; internal set; }
+		public bool HasWater { get; private set; }
 
-		public bool IsChecked { get; internal set; }
+		public bool IsChecked { get; set; }
 
-		public bool IsEmpty { get; internal set; } = true;
+		public bool IsEmpty { get; private set; } = true;
 
 		public string Name { get;} = "Cell";
 

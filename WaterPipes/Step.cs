@@ -9,7 +9,7 @@ namespace WaterPipes
 			NumberOfStep = 0;
 		}
 
-		public int NumberOfStep { get; internal set; }
+		public int NumberOfStep { get; private set; }
 
 		public void Paint()
 		{
